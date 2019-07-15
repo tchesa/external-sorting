@@ -657,7 +657,7 @@ esperado é que um programa com um número menor de instruções seja executado 
 
 Após uma pesquisa, a explicação encontrada para este fenômeno é a do **branch prediction**, que é um comportamento dos computadores modernos que os permite “prever” comportamentos futuros para então otimizar a execução do código. A figura abaixo representa um **if** e sua implementação em **assembly**.
 
-![banch_prediction](/assets/branch_prediction.png "Logo Title Text 1")
+![branch_prediction](/assets/branch_prediction.png "Branch prediction")
 
 Ao ver o comando de branch(salto), o processador não sabe o que fazer, assim deve esperar para que a próxima instrução esteja completa, para então continuar a execução do código.
 
