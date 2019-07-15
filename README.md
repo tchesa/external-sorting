@@ -94,9 +94,9 @@ int numblocos = (n%TAMMEMORIA == 0)? n/TAMMEMORIA : n/TAMMEMORIA + 1;
 Enfim, a criação dos blocos começa. A criação dos blocos acontece em um laço de repetição for que terá numblocos iterações. A cada iteração, o algoritmo adiciona um novo bloco na fita alvo (definida pela variável `fita`), adicionando um novo valor na lista de blocos dessa fita. Esse valor é o numero de elementos da fita, que coincidentemente é a posição do cursor dessa fita no momento, e onde o próximo bloco irá começar. Em seguida, o algoritmo verifica o numero de registros que terá no bloco a ser gerado. Isso é feito porquê caso este seja o ultimo bloco do arquivo, e o numero de elementos não seja divisivel pelo tamanho da memória, o tamanho desse bloco será menor que o tamanho da memória. Se esse calculo não for feito, o algoritmo irá inserir dados duplicados nas fitas temporárias. O valor desse cálculo será armazenado na variável inteira `numregistros`.
 
 ```c
-for(int i = 0; i < numblocos; i++) { 
-	// adiciona um novo bloco na fita
-	lista_adicionar(&blocos[fita], elementos[fita]);
+for (int i = 0; i < numblocos; i++) { 
+  // adiciona um novo bloco na fita
+  lista_adicionar(&blocos[fita], elementos[fita]);
   // calcula o numero de registros que tera no bloco
   int numregistros = (i == numblocos-1 && n%TAMMEMORIA != 0)? n%TAMMEMORIA : TAMMEMORIA;
 ```
