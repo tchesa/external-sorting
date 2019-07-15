@@ -42,7 +42,7 @@ FILE** fitas = malloc(sizeof(FILE*)*FF); // vetor de arquivos/fitas
 for(int i = 0; i < FF; i++) {
   char nome[11];
   sprintf(nome, "fita%.2i.bin", i);
-	fitas[i] = fopen(nome, "w+b");
+  fitas[i] = fopen(nome, "w+b");
 }
 ```
 
@@ -97,8 +97,8 @@ Enfim, a criação dos blocos começa. A criação dos blocos acontece em um la�
 for(int i = 0; i < numblocos; i++) { 
 	// adiciona um novo bloco na fita
 	lista_adicionar(&blocos[fita], elementos[fita]);
-// calcula o numero de registros que tera no bloco
-int numregistros = (i == numblocos-1 && n%TAMMEMORIA != 0)? n%TAMMEMORIA : TAMMEMORIA;
+  // calcula o numero de registros que tera no bloco
+  int numregistros = (i == numblocos-1 && n%TAMMEMORIA != 0)? n%TAMMEMORIA : TAMMEMORIA;
 ```
 
 Em seguida, o algoritmo irá ler os próximos numregistros registros do arquivo temporário e colocá-los na memória. O algoritmo ordena a memória através do Quicksort interno, e escreve os registros em ordem na fita alvo temporária. O numero de elementos da fita também é incrementado.
@@ -148,7 +148,7 @@ No inicio desse laço, o algoritmo começa desmarcando todas os registros que fo
 while (ftell(temp)/sizeof(registro) < n || temElementoNaMemoria(marcados, TAMMEMORIA)) {
 	for(int i = 0; i < TAMMEMORIA; i++) 
 		if(marcados[i] == 1) marcados[i] = 0; // desmarca todos que estavam na memoria	
-lista_adicionar(&blocos[fita], elementos[fita]); // adiciona um novo bloco para a fita alvo
+  lista_adicionar(&blocos[fita], elementos[fita]); // adiciona um novo bloco para a fita alvo
 ```
 
 O próximo laço de repetição fará a ordenação da memória, transferirá o menor elemento para a fita alvo e fará a leitura do próximo registro do arquivo temporário. Esse laço termina quando todos os registros da memória estiverem marcados (com `1` ou `-1`). O algoritmo começa ordenando a memória, para obter o menor elemento. Como o único registro de interesse é o menor, o algoritmo de ordenação utilizado nessa etapa é o **Heapsort**. Feito a ordenação, o menor registro é escrito no fita temporária alvo, e o tamanho da mesma é incrementado. 
