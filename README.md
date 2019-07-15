@@ -554,3 +554,125 @@ Resultados do algoritmo aplicado ao arquivo nas situações: ordenado ascendente
 
 ### Arquivo ordenado descendentemente
 
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |19499        |1376           |0.00108900 |
+|1.000      |241163       |18173          |0.00334400 |
+|10.000     |2294227      |180413         |0.03740900 |
+|100.000    |26548730     |2303050        |0.43774700 |
+|471.705    |138201425    |13221107       |2.28028202 |
+
+### Arquivo desordenado aleatoriamente
+
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |7714         |639            |0.00231300 |
+|1.000      |108570       |8107           |0.00609500 |
+|10.000     |1311550      |100606         |0.09091200 |
+|100.000    |15409863     |1205501        |1.15657198 |
+|471.705    |79532873     |6629202        |8.16820812 |
+
+Podemos observar que o método de geração dos blocos utilizando substituição por seleção é um método muito mais eficiente do que utilizando ordenação interna. Essa troca reduziu muito o tempo de execução do algoritmo, mesmo o número de comparações e transferências sendo levemente maior na maioria dos casos.
+
+## Intercalação balanceada de vários caminhos utilizando a técnica de substituição por seleção na geração dos blocos ordenados e F+1 fitas
+
+Resultados do algoritmo aplicado ao arquivo nas situações: ordenado ascendentemente, ordenado descendentemente e desordenado aleatoriamente.
+
+### Arquivo ordenado ascendentemente
+
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |26842        |1484           |0.00105800 |
+|1.000      |327213       |24298          |0.02146600 |
+|10.000     |3150577      |240698         |0.06965800 |
+|100.000    |33715150     |2903415        |0.72805899 |
+|471.705    |189116766    |18410684       |4.05806017 |
+
+### Arquivo ordenado descendentemente
+
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |24299        |1484           |0.00044000 |
+|1.000      |288099       |19181          |0.00475400 |
+|10.000     |2713955      |190421         |0.02895600 |
+|100.000    |29880066     |2403058        |0.28264001 |
+|471.705    |153609417    |13692820       |2.01439309 |
+
+### Arquivo desordenado aleatoriamente
+
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |13278        |742            |0.00137400 |
+|1.000      |181642       |12139          |0.00745500 |
+|10.000     |1830546      |120379         |0.10550000 |
+|100.000    |22294249     |1703016        |0.98784000 |
+|471.705    |118257114    |10390843       |6.16571379 |
+
+Podemos comparar esse método diretamente com o método anterior, onde teve a do uso de 2F fitas para F+1 fitas, utilizando o mesmo método de geração dos blocos ordenados. Os resultados foram bem similares, tendo um leve aumento no número de comparações e transferências, porem o tempo obtido foi levemente menor. Isso porquê, quando é utilizado o modo F+1 fitas, o número de passadas das fitas é sempre maior.
+
+Nesse caso, trabalhando com arquivos no disco rígido, o tempo foi menor, mas a utilização de um dispositivo de armazenamento com leitura e escrita mais lenta poderia ocorrer num aumento no tempo de execução do algorítmo utilizando o modo F+1 fitas.
+
+## Quicksort Externo
+
+### Arquivo ordenado ascendentemente
+
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |16497        |842            |0.00045000 |
+|1.000      |234724       |13589          |0.02590100 |
+|10.000     |2507166      |152196         |0.44369400 |
+|100.000    |26004980     |2066791        |4.98578882 |
+|471.705    |136631253    |12065209       |21.70017242|
+
+### Arquivo ordenado descendentemente
+
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |16547        |842            |0.00037700 |
+|1.000      |235157       |13589          |0.03087900 |
+|10.000     |2508752      |152196         |0.57720399 |
+|100.000    |26006490     |2066791        |5.04941893 |
+|471.705    |136635481    |12065209       |25.62002945|
+
+### Arquivo desordenado aleatoriamente
+
+|Quantidade |Comparações  |Transferências |Tempo      |
+|-----------|-------------|---------------|-----------|
+|100        |2846         |100            |0.00038000 |
+|1.000      |71905        |4433           |0.07273500 |
+|10.000     |668927       |88691          |1.22180796 |
+|100.000    |4858651      |1240459        |15.13516426|
+|471.705    |18710461     |5863066        |78.57408905|
+
+Inicialmente podemos notar que o algoritmo funciona de forma bem próxima quando os arquivos estão ordenados ascendentemente e descendentemente. O número de comparações e transferências é bem próximo, tendo uma pequena diferença no tempo decorrido de cada um. Isso se dá devido ao sistema de **particionamento do algoritmo quicksort**. O particionamento ocorre separando as porções maiores e menores que os elementos contidos no pivô, dessa forma haverá uma diferença muito pequena no número de comparações e transferências, pois tanto o array pivô, quanto os arrays maiores e menores serão de igual tamanho tanto para arquivos pré-ordenados ascendentemente quanto para descendentemente.
+
+Um outro fato interessante é que os arquivos ordenados de forma aleatória possuem um número menor de comparações e transferência, algo já esperado, mas possuem um tempo de execução muito maior que nos outros casos, o que pareceu muito contra-intuitivo. Este fenômeno pode ser explicado por questões de implementações do cache e do compilador, e serão explicados mais a frente.
+
+## Branch Prediction
+
+Um fato observado em todos os métodos estudados é que apesar de possuirem um número maior de comparações e transferências, as ordenações realizadas em arquivos pré-ordenados são executadas de forma mais rápida que as ordenações em arquivos organizados de forma aleatória.
+
+Esse fato foi contrário à expectativa geral dos integrantes do grupo, pois o
+esperado é que um programa com um número menor de instruções seja executado de forma mais rápida.
+
+Após uma pesquisa, a explicação encontrada para este fenômeno é a do **branch prediction**, que é um comportamento dos computadores modernos que os permite “prever” comportamentos futuros para então otimizar a execução do código. A figura abaixo representa um **if** e sua implementação em **assembly**.
+
+![banch_prediction](/assets/branch_prediction.png "Logo Title Text 1")
+
+Ao ver o comando de branch(salto), o processador não sabe o que fazer, assim deve esperar para que a próxima instrução esteja completa, para então continuar a execução do código.
+
+Uma estratégia para minimizar este tempo de espera é basear a predição no conteúdo da memória cache, assim, se tal predição estiver correta, o processador não precisa esperar pelo término da execução do branch para realizar o salto, podendo continuar a execução do programa de forma mais rápida.
+
+Desta forma, arquivos pré-ordenados favorecem essa otimização do processador, tornando as execuções muito mais rápidas, mesmo que possuam um numero maior de instruções internas.
+
+# Comparação dos métodos
+
+Através da análise dos dados obtidos, pode-se constatar que os métodos de intercalação balanceada apresentaram um desempenho melhor que o Quicksort externo. Entretanto vale lembrar que eles necessitam de fitas externas de memória, tornando assim o processo mais custoso, enquanto que o QuickSort externo realiza todas as operações sem o uso de fitas de memória auxiliares.
+
+Já uma comparação entre as diferentes formas de intercalação balanceada mostraram que a geração dos blocos ordenados através de ordenação interna são mais ineficientes que o método da substituição. Paralelamente pode-se constatar que o uso de f+1 fitas constitui uma perda pequena no desempenho geral do programa em comparação com o uso de 2f fitas, tornando assim uma boa opção pela necessidade menor de fitas de disco.
+
+# Referências
+
+* [Yee, Alexander. "What is Branch Prediction? - Stack Overflow Example"](https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array#11227902);
+* [Computer Systems: A Programmer's Perspective (2nd Edition): Randal E. Bryant, David R.](https://piazza-resources.s3.amazonaws.com/j7ly9riuca97on/ja86xbbpp0b73b/Randal_E._Bryant_David_R._OHallaron_Computer_SBookZZ.org.pdf);
+* [N. ZIVIANI. Projeto de Algoritmos com Implementações em Pascal e C. Cengage Learning, 2010.](http://clip2net.com/clip/m1076/1206625061-ebook-projetos-de-algoritmos-com-implementazhes-em-pascal-e-c-nivio-ziviani-4ed-3618kb.pdf)
