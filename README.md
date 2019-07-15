@@ -1,6 +1,6 @@
 # Ordenação Externa
 
-O objetivo deste trabalho consiste na implementação e em um estudo mais profundo da complexidade de desempenho dos seguintes métodos de ordenação externa:
+O objetivo deste trabalho consiste na implementação e em um estudo mais profundo do desempenho dos seguintes métodos de ordenação externa:
 * **Intercalação balanceada de vários caminhos (2f fitas)** utilizando, na etapa de geração dos blocos ordenados, **qualquer método de ordenação interna**;
 * **Intercalação balanceada de vários caminhos (2f fitas)** utilizando, na etapa de geração dos blocos ordenados, a técnica de **seleção por substituição**;
 * **Intercalação balanceada de vários caminhos (f+1 fitas)** utilizando, na etapa de geração dos blocos ordenados, a técnica de **seleção por substituição**;
