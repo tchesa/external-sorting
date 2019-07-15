@@ -670,7 +670,7 @@ Desta forma, arquivos pré-ordenados favorecem essa otimização do processador,
 
 Através da análise dos dados obtidos, pode-se constatar que os métodos de **intercalação balanceada** apresentaram um desempenho melhor que o **Quicksort externo**. Entretanto vale lembrar que eles necessitam de fitas externas de memória, tornando assim o processo mais custoso, enquanto que o **QuickSort externo** realiza todas as operações sem o uso de fitas de memória auxiliares.
 
-Já uma comparação entre as diferentes formas de intercalação balanceada mostraram que a geração dos blocos ordenados através de ordenação interna são mais ineficientes que o método da substituição. Paralelamente pode-se constatar que o uso de **f+1 fitas** constitui uma perda pequena no desempenho geral do programa em comparação com o uso de **2f fitas**, tornando assim uma boa opção pela necessidade menor de fitas de disco.
+Já uma comparação entre as diferentes formas de intercalação balanceada mostraram que a geração dos blocos ordenados através de **ordenação interna** são mais ineficientes que o **método da substituição**. Paralelamente, pode-se constatar que o uso de **f+1 fitas** constitui uma perda pequena no desempenho geral do programa em comparação com o uso de **2f fitas**, tornando assim uma boa opção pela necessidade menor de fitas de disco.
 
 # Referências
 
