@@ -1,9 +1,9 @@
 # Ordenação Externa
 
 O objetivo deste trabalho consiste em um estudo mais profundo da complexidade de desempenho dos seguintes métodos de ordenação externa:
-* **Intercalação balanceada de vários caminhos (2f fitas)** utilizando, na etapa de geração dos blocos ordenados, qualquer método de ordenação interna apresentado em *Estrutura de Dados I*;
-* **Intercalação balanceada de vários caminhos (2f fitas)** utilizando, na etapa de geração dos blocos ordenados, a técnica de seleção por substituição apresentada em *Estrutura de Dados II*;
-* **Intercalação balanceada de vários caminhos (f+1 fitas)** utilizando, na etapa de geração dos blocos ordenados, a técnica de seleção por substituição apresentada em *Estrutura de Dados II*;
+* **Intercalação balanceada de vários caminhos (2f fitas)** utilizando, na etapa de geração dos blocos ordenados, **qualquer método de ordenação interna** apresentado em *Estrutura de Dados I*;
+* **Intercalação balanceada de vários caminhos (2f fitas)** utilizando, na etapa de geração dos blocos ordenados, a técnica de **seleção por substituição** apresentada em *Estrutura de Dados II*;
+* **Intercalação balanceada de vários caminhos (f+1 fitas)** utilizando, na etapa de geração dos blocos ordenados, a técnica de **seleção por substituição** apresentada em *Estrutura de Dados II*;
 * **Quicksort externo**.
 
 Os métodos de ordenação em memória externa são utilizados em ocasiões em que os itens presentes em um arquivo externo são muito maiores que a capacidade de armazenamento da memória principal.
